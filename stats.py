@@ -1,3 +1,4 @@
+import sys
 def get_book_text(book_path):
     """
     Returns the text of a book from a file.
@@ -19,8 +20,8 @@ def get_num_words():
     Returns:
         int: The number of words in the book.
     """
-    book_path = 'books/frankenstein.txt'
-    book_text = get_book_text(book_path)
+    
+    book_text = get_book_text(sys.argv[1])
     
     count = 0
     for word in book_text.split():
@@ -36,7 +37,7 @@ def get_number_characters():
         dict: A dictionary with the characters of the book as keys and the
         number of times they appear as values.
     """
-    book_path = 'books/frankenstein.txt'
+    book_path = sys.argv[1]
     book_text = get_book_text(book_path).replace(" ", "").replace("\n", "").lower()
     characters = {}
     
@@ -73,7 +74,7 @@ def print_sorted_report():
     characters = get_number_characters()
     characters = sorted(characters.items(), reverse=True, key=sort_on)
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {sys.argv[1]}...")
     print("----------- Word Count ----------")
     print(f"Found {word_count} total words")
     print("--------- Character Count -------")
