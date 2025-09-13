@@ -71,7 +71,9 @@ def print_sorted_report():
         return items[1]
     
     word_count = get_num_words()
-    characters = get_number_characters()
+
+    # create dictionary
+    characters = get_number_characters() 
     characters = sorted(characters.items(), reverse=True, key=sort_on)
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {sys.argv[1]}...")
